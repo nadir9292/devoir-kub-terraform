@@ -36,6 +36,6 @@ jobs:
           az aks get-credentials --resource-group hitema_kube --name hitema
 
       - name: Deploy backend
-        run: |
-          echo "Current Path: $GITHUB_WORKSPACE"
-          kubectl apply -f back/backend.yml
+        run: kubectl apply -f back/backend.yml
+      - name: Deploy frontend
+        run: kubectl apply -f front/frontend.yml
