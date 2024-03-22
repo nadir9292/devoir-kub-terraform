@@ -35,7 +35,10 @@ jobs:
         run: |
           az login -u "${{ secrets.APP_ID }}" --service-principal -p "${{ secrets.AZURE_PWD }}" --tenant "${{ secrets.TENANT_ID }}"
           az aks get-credentials --resource-group hitema_kube --name hitema
-
+      - name: Deploy backend
+        run: kubectl apply -f back/backend.yml
+      - name: Deploy frontend
+        run: kubectl apply -f front/frontend.yml
       - name: Clear cache
         run: |
           kubectl delete deployment backend-nadir
