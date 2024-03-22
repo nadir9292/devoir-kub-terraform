@@ -15,6 +15,7 @@ spec:
       containers:
         - name: frontend-nadir
           image: nadir92/devoir_image_front:latest
+          imagePullPolicy: "Always"
           ports:
             - containerPort: 3001
 ---
