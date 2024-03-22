@@ -37,7 +37,9 @@ jobs:
           az aks get-credentials --resource-group hitema_kube --name hitema
 
       - name: Clear cache
-        run: kubectl delete deployment backend-nadir
+        run: |
+        kubectl delete deployment backend-nadir
+        kubectl delete deployment frontend-nadir
       - name: Deploy backend
         run: kubectl apply -f back/backend.yml
       - name: Deploy frontend
