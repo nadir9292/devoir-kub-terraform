@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: monimage_backend:latest
+          image: nadir92/devoir_image:latest
           ports:
             - containerPort: 3000
 ---
@@ -29,3 +29,4 @@ spec:
     - protocol: TCP
       port: 3000
       targetPort: 3000
+  type: LoadBalencer
