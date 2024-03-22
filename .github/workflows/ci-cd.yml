@@ -25,4 +25,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Connexion Azure
-        run: az login -u "${{ secrets.APP_ID }}" --service-principal -p "${{ secrets.AZURE_PWD }}" --tenant "${{ secrets.TENANT_ID }}"
+        run: |
+        az login -u "${{ secrets.APP_ID }}" --service-principal -p "${{ secrets.AZURE_PWD }}" --tenant "${{ secrets.TENANT_ID }}"
+        az aks get-credentials --resource-group hitema_kube --name hitema
+
+      - name: Deploy backend
+        run: kubectl apply -f backend.yaml
