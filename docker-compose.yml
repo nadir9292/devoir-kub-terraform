@@ -4,6 +4,8 @@ services:
   back:
     build:
       context: ./back
+      dockerfile: Dockerfile
+    image: nadir92/devoir_image:latest
     container_name: back
     ports:
       - 3000:3000
