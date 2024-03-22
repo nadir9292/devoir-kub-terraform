@@ -30,4 +30,4 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Connexion Azure
-        run: az login -u "${{APP_ID}}" --service-principal -p "${{AZURE_PWD}}" --tenant "${{TENANT_ID}}"
+        run: az login -u "${{ secrets.APP_ID }}" --service-principal -p "${{ secrets.AZURE_PWD }}" --tenant "${{ secrets.TENANT_ID }}"
