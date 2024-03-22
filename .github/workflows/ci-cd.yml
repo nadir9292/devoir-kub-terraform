@@ -39,3 +39,27 @@ jobs:
         run: kubectl apply -f back/backend.yml
       - name: Deploy frontend
         run: kubectl apply -f front/frontend.yml
+
+  deploy_cluster:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve tfplan
+
+      - name: Get Kubernetes Credentials
+        run: |
+          az aks get-credentials --resource-group hitema_kube --name cluster-nadir
+          KUBE_SERVER=$(az aks show --resource-group hitema_kube --name cluster-nadir --query "aadProfile.managedClusterApiServerAddress" -o tsv)
+          echo "Kubernetes Server Address: $KUBE_SERVER"

@@ -2,16 +2,12 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_resource_group" "example" {
-  name     = "example-resources"
-  location = "East US"
-}
-
-resource "azurerm_kubernetes_cluster" "example" {
-  name                = "example-aks-cluster"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
-  dns_prefix          = "example-aks-cluster"
+# Définition du cluster AKS
+resource "azurerm_kubernetes_cluster" "aks-nadir" {
+  name                = "cluster-nadir"
+  location            = "Sweden Central"
+  resource_group_name = "hitema_kube"  # Le groupe de ressources existant
+  dns_prefix          = "hitema"
 
   default_node_pool {
     name       = "default"
@@ -20,6 +16,6 @@ resource "azurerm_kubernetes_cluster" "example" {
   }
 
   tags = {
-    environment = "Production"
+    environment = "Dev"
   }
 }
