@@ -29,7 +29,7 @@ const Home = () => {
             searchedData.map(({ id, name }, index) => (
               <div
                 key={index}
-                className="hover:scale-105 shadow-lg bg-red-400 py-4 px-4 rounded-xl"
+                className="hover:scale-105 shadow-lg bg-yellow-400 py-4 px-4 rounded-xl"
               >
                 <div className="mt-4 grid grid-cols-1">
                   <Typography color="white" className="items-center font-bold">
