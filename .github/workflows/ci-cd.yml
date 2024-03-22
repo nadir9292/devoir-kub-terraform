@@ -30,4 +30,4 @@ jobs:
           az aks get-credentials --resource-group hitema_kube --name hitema
 
       - name: Deploy backend
-        run: kubectl apply -f ./back
+        run: kubectl apply -f back/backend.yaml
