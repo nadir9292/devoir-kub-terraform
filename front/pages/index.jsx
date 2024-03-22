@@ -11,7 +11,10 @@ const Home = () => {
         const response = await axios.get("http://4.225.75.248:3000/employees")
         setSearchedData(response.data)
       } catch (error) {
-        throw error
+        setSearchedData([
+          { id: 1, name: "NADIR" },
+          { id: 2, name: "QUENTIN" },
+        ])
       }
     }
 
