@@ -19,6 +19,6 @@ jobs:
       - name: Build and Push Docker Image
         working-directory: .github/workflows
         run: |
-          docker build -t nadir92/devoir_imgage:latest ./back
+          docker build -t nadir92/devoir_imgage:latest back
           echo "build"
           docker push nadir92/devoir_imgage:latest
