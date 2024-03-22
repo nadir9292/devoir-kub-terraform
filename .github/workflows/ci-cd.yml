@@ -24,10 +24,5 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Kubernetes CLI
-        uses: azure/aks-set-context@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
       - name: Connexion Azure
         run: az login -u "${{ secrets.APP_ID }}" --service-principal -p "${{ secrets.AZURE_PWD }}" --tenant "${{ secrets.TENANT_ID }}"
