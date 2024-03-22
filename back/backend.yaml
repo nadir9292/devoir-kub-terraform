@@ -1,32 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
+  name: backend-nadir
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: backend
+      app: backend-nadir
   template:
     metadata:
       labels:
-        app: backend
+        app: backend-nadir
     spec:
       containers:
-        - name: backend
+        - name: backend-nadir
           image: nadir92/devoir_image:latest
           ports:
-            - containerPort: 3000
+            - containerPort: 3213
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend-service
+  name: backend-nadir-service
 spec:
   selector:
-    app: backend
+    app: backend-nadir
   ports:
     - protocol: TCP
-      port: 3000
-      targetPort: 3000
-  type: LoadBalencer
+      port: 3213
+      targetPort: 3213
+  type: LoadBalancer
