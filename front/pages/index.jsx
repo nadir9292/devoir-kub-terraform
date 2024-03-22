@@ -8,7 +8,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http:/4.225.75.248:3000/employees")
+        const response = await axios.get("http://4.225.75.248:3000/employees")
         setSearchedData(response.data)
       } catch (error) {
         throw error
