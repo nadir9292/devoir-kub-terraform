@@ -38,8 +38,8 @@ jobs:
 
       - name: Clear cache
         run: |
-        kubectl delete deployment backend-nadir
-        kubectl delete deployment frontend-nadir
+          kubectl delete deployment backend-nadir
+          kubectl delete deployment frontend-nadir
       - name: Deploy backend
         run: kubectl apply -f back/backend.yml
       - name: Deploy frontend
