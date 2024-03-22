@@ -18,7 +18,7 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build -t nadir92/devoir_image:latest .
+          docker build -t nadir92/devoir_image:latest ./back
           docker push nadir92/devoir_image:latest
 
   deploy:
