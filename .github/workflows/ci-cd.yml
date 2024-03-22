@@ -31,5 +31,5 @@ jobs:
 
       - name: Deploy backend
         run: |
-          ls
+          echo "Current Path: $GITHUB_WORKSPACE"
           kubectl apply -f back/backend.yml
