@@ -1,0 +1,37 @@
+name: Deploy AKS Cluster
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Terraform Init
+        run: terraform init terraform/
+
+      - name: Terraform Plan
+        run: terraform plan terraform/
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve terraform/
+
+      - name: Get Cluster IP
+        run: echo "::set-env name=CLUSTER_IP::$(terraform output cluster_ip)"
+
+      - name: Configure kubectl
+        run: |
+          az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
+          az aks get-credentials --resource-group <RESOURCE_GROUP_NAME> --name <AKS_CLUSTER_NAME>
+          kubectl config use-context <AKS_CLUSTER_NAME>
+
+      # Ajoutez les étapes supplémentaires pour déployer votre application sur le cluster AKS

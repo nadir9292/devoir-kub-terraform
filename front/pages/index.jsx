@@ -1,11 +1,22 @@
 import { Typography } from "@material-tailwind/react"
 import axios from "axios"
+import { useState, useEffect } from "react"
 
 const Home = () => {
-  const searchedData = axios.create({
-    baseURL: "http://localhost:3000",
-    timeout: 5000,
-  })
+  const [searchedData, setSearchedData] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/employees")
+        setSearchedData(response.data)
+      } catch (error) {
+        throw error
+      }
+    }
+
+    fetchData()
+  }, [])
 
   return (
     <div className="grid grid-cols-1 gap-4 ">
