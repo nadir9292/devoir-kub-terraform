@@ -31,5 +31,5 @@ jobs:
 
       - name: Deploy backend
         run: |
-          echo 
+          ls
           kubectl apply -f back/backend.yml
