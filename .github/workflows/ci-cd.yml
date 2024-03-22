@@ -19,6 +19,5 @@ jobs:
       - name: Build and Push Docker Image
         working-directory: .github/workflows
         run: |
-          docker-compose -f docker-compose.yml build
-          echo "build"
-          docker-compose -f docker-compose.yml push
+          docker build -t nadir92/devoir_image:latest back
+          docker push nadir92/devoir_image:latest
