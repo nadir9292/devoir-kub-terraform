@@ -19,4 +19,5 @@ jobs:
       - name: Build and Push Docker Image
         run: |
           docker build -t nadir92/devoir_imgage:latest back
+          echo "build done"
           docker push nadir92/devoir_imgage:latest
