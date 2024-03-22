@@ -46,6 +46,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Change directory to Terraform
+        run: cd terraform
+
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v1
 
